@@ -21,3 +21,4 @@ To install.
 
 - use brackets Extensions manager ( tip: search for 'brackulator' )
 - or manually through extension manager by URL: https://github.com/i07/brackulator/archive/master.zip
+- reload Brackets
