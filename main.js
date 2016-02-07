@@ -23,44 +23,46 @@ define(function (require, exports, module) {
     
     var braculator = {
         
-        value : 0,
-        memory: 0,
-        emptyOnStart: false,
-        calctype: '',
+        value           : 0,
+        memory          : 0,
+        emptyOnStart    : false,
+        calctype        : '',
+        wrapper         : 'braculator-wrapper',
         
         create : function() {
             
-            if (!document.getElementById('braculator-wrapper')) {
+            if (!document.getElementById(braculator.wrapper)) {
                 var div = document.createElement('div');
-                div.id = 'braculator-wrapper';
+                div.id = braculator.wrapper;
 
                 document.body.appendChild(div);
                 
-                $('#braculator-wrapper').append(_be.titlebar());
-                $('#braculator-wrapper #braculator-titlebar').append('Brackulator v1.0.1');
-                $('#braculator-wrapper').append(_be.display);
-                $('#braculator-wrapper').append(_be.keypad());
-                $('#braculator-wrapper').append(_be.clipboardMessage());
+                $('#' + braculator.wrapper).append(_be.titlebar());
+                $('#' + braculator.wrapper + ' #braculator-titlebar').append('Brackulator v1.0.2');
+                $('#' + braculator.wrapper).append(_be.display);
+                $('#' + braculator.wrapper).append(_be.keypad());
+                $('#' + braculator.wrapper).append(_be.clipboardMessage());
 
             } else {
-                if ($('#braculator-wrapper').css('display') == "none") {
+                
+                if ($('#' + braculator.wrapper).css('display') == "none") {
                     braculator.show();
-                } else {
-                    braculator.hide();    
+                } else { 
+                    braculator.hide();
                 }
                 
             }
         },
         
         show : function() {
-            $('#braculator-wrapper').show();
+            $('#' + braculator.wrapper).show();
         },
         hide : function() {
-            $('#braculator-wrapper').hide();
+            $('#' + braculator.wrapper).hide();
         },
         
         destroy : function() {
-            document.body.removeChild(document.getElementById('braculator-wrapper'));
+            document.body.removeChild(document.getElementById(braculator.wrapper));
         }
     };
     
@@ -110,7 +112,7 @@ define(function (require, exports, module) {
                 braculator.emptyOnStart = false;
             }
             var val = $('#braculator-digitDisplay').html();
-            if ( val == "0" ) { val = ""; }
+            if ( val === "0" && e.target.value !== "." ) { val = ""; }
                 
             if (_ut.isNumeric(e.target.value)) {
                 var newval;
@@ -123,7 +125,9 @@ define(function (require, exports, module) {
                 
                 if (e.target.value === ".") {
                     
-                    $('#braculator-digitDisplay').html(val + ".");
+                    if ($('#braculator-digitDisplay').html().indexOf(".") === -1) {
+                        $('#braculator-digitDisplay').html(val + ".");
+                    }
                     
                 } else if (e.target.value === "=") {
                     
@@ -227,9 +231,10 @@ define(function (require, exports, module) {
         },
         
         keypad : function() {
+            
             var keypadHolder = document.createElement('div');
             keypadHolder.id = 'keypad';
-            _ut.append(keypadHolder, 'braculator-wrapper');
+            _ut.append(keypadHolder, braculator.wrapper);
             
             var _table = document.createElement('table');
             _ut.append(_table, 'keypad');
@@ -252,6 +257,7 @@ define(function (require, exports, module) {
         },
         
         grid : {
+            
             row : function(objArray) {
                 var row = document.createElement('tr');
             

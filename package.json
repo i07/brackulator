@@ -3,7 +3,7 @@
     "title": "Brackulator",
     "description": "Adds a popup calculator right inside brackets",
     "homepage": "https://github.com/i07/brackulator",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Marc Donkers (marc@donkers.co.uk)",
     "license": "MIT",
     "keywords": ["brackulator", "calculator", "calc"]
