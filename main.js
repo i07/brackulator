@@ -171,7 +171,7 @@ define(function (require, exports, module) {
             cpm.style.textAlign = 'center';
             cpm.style.fontWeight = 'bold';
             cpm.style.display = 'none';
-            cpm.innerHTML = "result copied to clipboard";
+            cpm.innerHTML = "Result copied to clipboard";
             
             return cpm;
             
@@ -203,8 +203,8 @@ define(function (require, exports, module) {
             display.innerHTML = "0";
             display.ondblclick = function() { 
                 display.innerHTML = 0;
-                $('#statusMessage').html('display cleared');
-                $('#statusMessage').fadeIn(100).fadeOut(3000);
+                $('#statusMessage').html('Display cleared');
+                $('#statusMessage').fadeIn(75).fadeOut(3500);
             };
             display.oncontextmenu = function(e) {
                 
@@ -214,14 +214,14 @@ define(function (require, exports, module) {
                     
                     editor._codeMirror.replaceRange($('#braculator-digitDisplay').html(), cursor, cursor);
                     
-                    $('#statusMessage').html('result copied to editor');
+                    $('#statusMessage').html('Result copied to editor');
                     
                     EditorManager.focusEditor();
                     
                 } else {
                     _ut.copyToClipboard($('#braculator-digitDisplay').html());
-                    $('#statusMessage').html('result copied to clipboard');
-                    $('#statusMessage').fadeIn(100).fadeOut(3000);
+                    $('#statusMessage').html('Result copied to clipboard');
+                    $('#statusMessage').fadeIn(75).fadeOut(3500);
                 }
                 
             };

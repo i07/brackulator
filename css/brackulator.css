@@ -1,107 +1,244 @@
-@import url(http://fonts.googleapis.com/css?family=Audiowide);
+/*
+    -------------------
+    Brackulator styling
+    -------------------
+*/
+
+
+/* ----------< Wrapper / container >---------- */
 
 #braculator-wrapper {
-    
-    /*border: 4px solid rgb(255, 255, 255);*/
     z-index: 9999;
-    width: 220px;
-    height: 320px;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    background: rgb(230,220,210);
+    bottom: 10px;
+    left: 10px;
+    width: 240px;
+    height: 330px;
+
+    opacity: 1;
+    background: rgb(102,102,102) linear-gradient(to bottom,
+        rgb(102,102,102) 30%,
+        rgb(85,85,85) 80%,
+        rgb(68,68,68));
+    box-shadow:
+        0 0 20px rgba(0,0,0,0.85),
+        0 20px 3px rgba(255,255,255,0.1) inset,
+        0 0 10px rgb(51,51,51) inset,
+        0 -11px 40px rgb(34,34,34) inset;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    border-right: 1px solid rgba(0,0,0,0.5);
+    border-left: 1px solid rgba(0,0,0,0.25);
     border-radius: 4px;
-    opacity: 0.9;
-    box-shadow:	inset 0px -11px 30px rgba(55,45,35,0.6),
-				inset 0px -7px 8px rgba(55,45,35,0.7),
-				inset 0px -1px 1px rgba(255,255,255,0.4),
-				inset 0px 20px 3px rgba(255,255,255,0.2),
-				0px 17px 27px rgba(0,0,0,0.7),
-				0px 4px 3px rgba(0,0,0,0.8),
-				-2px -2px 2px rgba(0,0,0,0.5),
-				inset 1px 1px 1px rgba(255,255,255,0.5),
-				inset 0px 2px 2px rgba(0,0,0,0.2),
-				inset 1px 0px 2px rgba(0,0,0,0.4),
-				inset -1px 0px 2px rgba(0,0,0,0.4);
-    
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    -webkit-animation: load-up 0.25s ease;
+            animation: load-up 0.25s ease;
 }
 
-#braculator-wrapper #braculator-titlebar {
-    border-radius: 4px;
-    height:25px;
-    margin-bottom:4px;
-    padding-right:10px;
-    padding-top:5px;
-    text-align: center;
+@-webkit-keyframes load-up {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
+
+@keyframes load-up {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ----------< Titlebar: Brackulator v.x.x >---------- */
+
+#braculator-wrapper #braculator-titlebar {
+    height: 25px;
+    margin-bottom: 4px;
+    padding-top: 5px;
+    padding-right: 10px;
+
+    border-radius: 4px;
+
+    color: rgb(255,255,255);
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+
+/* ----------< Display >---------- */
+
+#braculator-wrapper #braculator-digitDisplay {
+    width: calc(100% - 20px);
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    padding-right: 5px;
+    overflow: hidden;
+
+    background-color: rgb(224,219,197);
+    box-shadow:
+        inset 0px -3px 10px rgba(0,0,0,0.1),
+		inset 1px 3px 9px rgba(0,0,0,0.75),
+        0 1px 3px rgb(69,69,69);
+    border-top: 1px solid rgb(85,85,85);
+    border-bottom: 1px solid rgb(120,120,120);
+    border-left: 1px solid rgb(136,136,136);
+    border-right: 1px solid rgb(136,136,136);
+    border-radius: 5px;
+
+    color: rgb(77,70,40);
+    font-family: monospace;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 48px;
+    text-align: right;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.25);
+    cursor: pointer; /* for visual clue */
+}
+
+/* ----------< Help: "double click to clear..." >---------- */
 
 #braculator-wrapper #braculator-titlebar #help {
     position: absolute;
-    top: 64px;
-    text-align: center;
     width: 100%;
+    top: 65px;
+
+    color: rgb(114,128,106);
     font-size: 11px;
-    color: #898;
+    text-align: center;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.25);
 }
 
-#braculator-wrapper #braculator-digitDisplay {
-    font-family: "Audiowide";
-    height:48px;
-    width:calc(100% - 20px);
-    margin:0 auto;
-    text-align: right;
-    font-size: 22px;
-    font-weight: normal;
-    padding-right: 5px;
-    background-color: rgb(206,206,182);
-    color: whitesmoke;
-    box-shadow:inset 0px -3px 10px rgba(0,0,0,0.05),
-				inset 1px 3px 9px rgba(0,0,0,0.3),
-				inset 1px 1px 1px rgba(0,0,0,0.2),
-				inset -1px -1px 1px rgba(0,0,0,0.1),
-				inset 0px 2px 1px 2px rgba(0,0,0,0.1);
-    margin-bottom:6px;
-    border-radius:6px;
-    color:#222;
-    line-height: 48px;
-    overflow:hidden;
-}
-#braculator-wrapper #keypad {
-    /*border:1px solid #f00;*/
-    margin:0 auto;
-}
+/* ----------< Keypad elements >---------- */
 
-#braculator-wrapper #keypad table {
-    margin:0 auto;
-}
+#braculator-wrapper #keypad { margin: 0 auto; }
+
+#braculator-wrapper #keypad table { margin: 0 auto; }
+
+/* Targeting buttons in general */
 
 #braculator-wrapper button {
     min-width: 40px;
     min-height: 40px;
-    font-family: "Audiowide";
-    font-size:15px;
-    border:1px solid;
-    color: rgba(0,0,0,0.65);
-    text-shadow:1px 1px 2px rgba(255,255,255,1), 
-				0px 0 0 #000,
-				0px 1px 1px rgba(255,255,255,1);
-	margin:3px;
-    border-radius:5px;
-	background: rgba(240,230,220,1);
-	border-bottom-color:rgba(0,0,0,0.7);
-	border-top-color:rgba(0,0,0,0.5);
-	border-right-color:rgba(0,0,0,0.6);
-	border-left-color:rgba(0,0,0,0.6);
+	margin: 3px;
+
+    background: rgb(221,221,221);
+    box-shadow:
+        0 2px 1px 1px rgb(52,50,50),
+        0 0 6px rgba(0,0,0,0.65) inset;
+    border: 1px solid rgb(187,187,187);
+    border-left: 1px solid rgb(224,224,224);
+    border-top: 1px solid rgb(224,224,224);
+    border-radius: 5px;
+
+    color: rgb(51,51,51);
+    font-family: monospace;
+    font-size: 15px;
+    text-shadow:
+        0 1px 0 rgb(255,255,255),
+        0 0 2px rgb(117,117,117);
+
+    transition: 0.15s;
 }
 
-#braculator-wrapper button:active{
-	top:3px;
+#braculator-wrapper button:focus { outline: none; }
+
+#braculator-wrapper button:hover {
+    background: rgb(209,209,209);
+    box-shadow:
+        0 1px 1px 0 rgb(52,50,50),
+        0 0 6px rgb(117,117,117) inset;
+    border: 1px solid rgb(34,34,34);
+    border-top: 1px solid rgb(170,170,170);
+    border-right: 1px solid rgb(170,170,170);
+
+    color: transparent;
+    text-shadow:
+        1px 1px 0 rgb(52,50,50),
+        1px 1px 2px rgb(117,117,117);
+
+    transition: 0.2;
+    
+    /* slight downward motion for more realistic pressed-state: */
+    transform: translateY(2px);
 }
 
-#braculator-wrapper button:hover{
-	outline:none;
-	color: rgba(255,120,0,0.6);
-    text-shadow:1px 1px 2px rgba(255,255,255,1), 
-				0px 0 0 #000,
-				0px 1px 1px rgba(255,255,255,1);
+/* Targeting arithmetic operation buttons */
+
+#keypad td:nth-of-type(4) button {
+    background: rgb(68,68,68);
+    box-shadow:
+        0 2px 1px 1px rgb(34,34,34),
+        0 0 6px rgb(37,37,37) inset;
+    border: 1px solid rgb(69,69,69);
+    border-top: 1px solid rgb(119,119,119);
+    border-left: 1px solid rgb(102,102,102);
+    border-radius: 5px;
+
+    color: rgb(216,147,43);
+    text-shadow:
+        0 1px 0 rgb(17,17,17),
+        0 0 3px rgb(102,102,102);
+}
+
+#keypad td:nth-of-type(4) button:hover {
+    background: rgb(65,65,65);
+    box-shadow:
+        0 1px 1px rgb(34,34,34),
+        0 0 6px rgb(40,40,40) inset;
+    border: 1px solid rgb(37,37,37);
+    border-top: 1px solid rgb(68,68,68);
+    border-right: 1px solid rgb(68,68,68);
+    border-radius: 5px;
+
+    color: transparent;
+    text-shadow:
+        1px 1px 0 rgb(216,147,43),
+        1px 1px 4px rgb(34,34,34);
+}
+
+/* Targeting '=' button */
+
+#keypad tr:nth-child(4) td:nth-child(3) button {
+    background: rgb(216,147,43);
+    box-shadow:
+        0 2px 1px 1px rgb(37,37,37),
+        0 0 6px rgba(0,0,0,.65) inset;
+    border: 1px solid rgb(223,168,85);
+    border-right: rgb(169,115,32);
+    border-bottom: rgb(169,115,32);
+    text-shadow: 0 0 3px rgb(255,255,255);
+}
+
+#keypad tr:nth-child(4) td:nth-child(3) button:hover {
+    background: rgb(200,138,38);
+    box-shadow:
+        0 1px 1px rgb(34,34,34),
+        0 0 6px rgba(0,0,0,.5) inset;
+    border: 1px solid rgb(75,51,14);
+    border-top: rgb(157,106,30);
+    border-right: rgb(157,106,30);
+
+    color: transparent;
+    text-shadow:
+        1px 1px 0 rgb(51,51,51),
+        0 0 4px rgba(255,255,255,.5);
+}
+
+/* ----------< Status message >---------- */
+
+#statusMessage {
+    width: 85%;
+    margin: auto;
+    margin-top: 5px;
+
+    background: rgb(41,171,226);
+    box-shadow:
+        0 1px 3px rgb(34,34,34),
+        0 0 3px rgb(34,34,34) inset;
+    border-radius: 5px;
+
+    color: rgb(255,255,255);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-shadow: 
+        1px 1px 1px rgb(17,17,17),
+        0 0 3px rgb(34,34,34);
 }
