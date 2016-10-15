@@ -1,6 +1,6 @@
 ![brackets logo](https://cloud.githubusercontent.com/assets/6317005/12852935/6082a77a-cc29-11e5-910d-3947bcd2b535.png)
 #Brackets-Brackulator
-Brackulator is a simple but useful calculator that lives in your brackets editor.
+Brackulator is a simple but useful calculator that lives in your Brackets editor.
 
 Although it's ready to use, it's still considered a work in progress. Feel free to jump in, if you think you can contribute!
 
@@ -15,7 +15,7 @@ On the calculator result pane:
 
 ***
 
-![Brackulator](https://cloud.githubusercontent.com/assets/6317005/12867751/f35b6bb2-cced-11e5-854b-8449ea9d6a90.png)
+![Brackulator](https://cloud.githubusercontent.com/assets/11914422/19394189/e1e649d0-922f-11e6-92a3-86494c17025f.png)
 
 To install.
 
